@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConFil</title>
+    <link rel="stylesheet" href="static/css/dashboard.css">
+    <!-- For Bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+
+<body class="body_color">
+    <!-- Jquery Cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Bootstrap Growl Cdn below for alert messages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-growl/1.0.0/jquery.bootstrap-growl.min.js"
+        integrity="sha512-pBoUgBw+mK85IYWlMTSeBQ0Djx3u23anXFNQfBiIm2D8MbVT9lr+IxUccP8AMMQ6LCvgnlhUCK3ZCThaBCr8Ng=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        Hey, <strong>{{session.Visitor_Name}}</strong> Welcome To the Confil the Online File Converter
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <!-- For Bootstrap Javascript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <nav class="navbar navbar-expand-lg bg-info text-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="{{url_for('static',filename='images/file.png')}}" alt="Bootstrap" width="30" height="24">
+            </a>
+            <a class="navbar-brand" href="#">ConFil</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="dashboard">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact_us">Contact Us</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <button class="btn btn-outline-primary" name="{{url_for('logout')}}" type="submit">Logout</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <section class="description">
+        <section class="title_section">
+            <h1 class="font_size_big">ConFil</h1>
+            <h1 class="font_size_mid"><br>Online File Converter</h1>
+            <p class="font_size_sml"><br>Convert media files online one format to another.<br>Please Select one target
+                format below.</p>
+        </section>
+        <section class="image_section">
+            <img class="desc_image" src="{{url_for('static',filename='images/img.jpg')}}" alt="">
+            <section class="text_img">
+                <h4>Convert</h4>
+
+            </section>
+            <div class="dropdown so-frmt">
+                <button class="btn btn-warning dropdown-toggle so-bt" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Source File Format
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Bmp</a></li>
+                    <li><a class="dropdown-item" href="#">Eps</a></li>
+                    <li><a class="dropdown-item" href="#">Exr</a></li>
+                    <li><a class="dropdown-item" href="#">Gif</a></li>
+                    <li><a class="dropdown-item" href="#">Ico</a></li>
+                    <li><a class="dropdown-item" href="#">Jpeg</a></li>
+                    <li><a class="dropdown-item" href="#">Jpg</a></li>
+                    <li><a class="dropdown-item" href="#">Pdf</a></li>
+                    <li><a class="dropdown-item" href="#">Png</a></li>
+                    <li><a class="dropdown-item" href="#">Svg</a></li>
+                    <li><a class="dropdown-item" href="#">Tiff</a></li>
+                    <li><a class="dropdown-item" href="#">Wbmp</a></li>
+                    <li><a class="dropdown-item" href="#">Webp</a></li>
+                </ul>
+            </div>
+            <div class="dropdown tar-frmt">
+                <button class="btn btn-warning dropdown-toggle tar-bt" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Target File Format
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Bmp</a></li>
+                    <li><a class="dropdown-item" href="#">Eps</a></li>
+                    <li><a class="dropdown-item" href="#">Exr</a></li>
+                    <li><a class="dropdown-item" href="#">Gif</a></li>
+                    <li><a class="dropdown-item" href="#">Ico</a></li>
+                    <li><a class="dropdown-item" href="#">Jpeg</a></li>
+                    <li><a class="dropdown-item" href="#">Jpg</a></li>
+                    <li><a class="dropdown-item" href="#">Pdf</a></li>
+                    <li><a class="dropdown-item" href="#">Png</a></li>
+                    <li><a class="dropdown-item" href="#">Svg</a></li>
+                    <li><a class="dropdown-item" href="#">Tiff</a></li>
+                    <li><a class="dropdown-item" href="#">Wbmp</a></li>
+                    <li><a class="dropdown-item" href="#">Webp</a></li>
+                </ul>
+            </div>
+        </section>
+    </section>
+    <section class="mcs">
+        <section class="main_card_section container">
+            <div class="row">
+                <div class="col c_pad">
+                    <div class="card h-100" style="width: 18rem;">
+                        <img src="{{url_for('static',filename='images/jpgtopdf.png')}}" class="card-img-top crd_shp"
+                            alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Jpg to Pdf Converter</h5>
+                            <p class="card-text">Click the below button to convert a jpg file to it's eqivalent pdf file
+                                format online & free in few seconds</p>
+                            <a href="#" class="btn btn-primary">Jpg to Pdf Converter</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col c_pad">
+                    <div class="card h-100" style="width: 18rem;">
+                        <img src="{{url_for('static',filename='images/jpgtopng.png')}}" class="card-img-top crd_shp"
+                            alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Jpg to Png Converter</h5>
+                            <p class="card-text">Click the below button to convert a jpg file to it's eqivalent png
+                                image
+                                format online & free in few seconds</p>
+                            <a href="#" class="btn btn-primary">Jpg to Png Converter</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col c_pad">
+                    <div class="card h-100" style="width: 18rem;">
+                        <img src="{{url_for('static',filename='images/webptojpg.png')}}" class="card-img-top crd_shp"
+                            alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Webp to Jpg Converter</h5>
+                            <p class="card-text">Click the below button to convert a webp file to it's eqivalent jpg
+                                image
+                                format online & free in few seconds</p>
+                            <a href="#" class="btn btn-primary">Webp to Jpg Converter</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col c_pad">
+                    <div class="card h-100" style="width: 18rem;">
+                        <img src="{{url_for('static',filename='images/PNGtoGIF.png')}}" class="card-img-top crd_shp"
+                            alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Png to Gif Converter</h5>
+                            <p class="card-text">Click the below button to convert a png file to it's eqivalent gif
+                                image
+                                format online & free in few seconds</p>
+                            <a href="#" class="btn btn-primary">Png to Gif Converter</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col c_pad">
+                    <div class="card h-100" style="width: 18rem;">
+                        <img src="{{url_for('static',filename='images/PNGtoSVG.jpeg')}}" class="card-img-top crd_shp"
+                            alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">SVG to Png Converter</h5>
+                            <p class="card-text">Click the below button to convert a svg file to it's eqivalent png
+                                image
+                                format online & free in few seconds</p>
+                            <a href="#" class="btn btn-primary">SVG to Png Converter</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col c_pad">
+                    <div class="card h-100" style="width: 18rem;">
+                        <img src="{{url_for('static',filename='images/pngtotiff.png')}}" class="card-img-top crd_shp"
+                            alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Png to Tiff Converter</h5>
+                            <p class="card-text">Click the below button to convert a png file to it's eqivalent tiff
+                                image
+                                format online & free in few seconds</p>
+                            <a href="#" class="btn btn-primary">Png to Tiff Converter</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col c_pad">
+                    <div class="card h-100" style="width: 18rem;">
+                        <img src="{{url_for('static',filename='images/jpgtobmp.png')}}" class="card-img-top crd_shp"
+                            alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Jpg to Bmp Converter</h5>
+                            <p class="card-text">Click the below button to convert a jpg file to it's eqivalent bmp
+                                image
+                                format online & free in few seconds</p>
+                            <a href="#" class="btn btn-primary">Jpg to Bmp Converter</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col c_pad">
+                    <div class="card h-100" style="width: 18rem;">
+                        <img src="{{url_for('static',filename='images/jptojpeg.jpg')}}" class="card-img-top crd_shp"
+                            alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Jpg to Jpeg Converter</h5>
+                            <p class="card-text">Click the below button to convert a jpg file to it's eqivalent jpeg
+                                image
+                                format online & free in few seconds</p>
+                            <a href="#" class="btn btn-primary">Jpg to Jpeg Converter</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col c_pad">
+                    <div class="card h-100" style="width: 18rem;">
+                        <img src="{{url_for('static',filename='images/pngtoico.jpg')}}" class="card-img-top crd_shp"
+                            alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Png to Ico Converter</h5>
+                            <p class="card-text">Click the below button to convert a png file to it's eqivalent ico
+                                image
+                                format online & free in few seconds</p>
+                            <a href="#" class="btn btn-primary">Png to Ico Converter</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col c_pad">
+                    <div class="card h-100" style="width: 18rem;">
+                        <img src="{{url_for('static',filename='images/wbmptogif.png')}}" class="card-img-top crd_shp"
+                            alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Wbmp to Gif Converter</h5>
+                            <p class="card-text">Click the below button to convert a wbmp file to it's eqivalent gif
+                                image
+                                format online & free in few seconds</p>
+                            <a href="#" class="btn btn-primary">Wbmp to Gif Converter</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col c_pad">
+                    <div class="card h-100" style="width: 18rem;">
+                        <img src="{{url_for('static',filename='images/giftoeps.png')}}" class="card-img-top crd_shp"
+                            alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Gif to Eps Converter</h5>
+                            <p class="card-text">Click the below button to convert a gif file to it's eqivalent eps
+                                image
+                                format online & free in few seconds</p>
+                            <a href="#" class="btn btn-primary">Gif to Eps Converter</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col c_pad">
+                    <div class="card h-100" style="width: 18rem;">
+                        <img src="{{url_for('static',filename='images/exrtojpg.png')}}" class="card-img-top crd_shp"
+                            alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Exr to Jpg Converter</h5>
+                            <p class="card-text">Click the below button to convert a exr file to it's eqivalent jpg
+                                image
+                                format online & free in few seconds</p>
+                            <a href="#" class="btn btn-primary">Exr to Jpg Converter</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/aksfileupload@1.0.0/dist/aksFileUpload.min.css">
+    <!-- <link type="text/css" rel="stylesheet" href="https://unpkg.com/aksfileupload@1.0.0/dist/aksFileUpload.min.css"> -->
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/aksfileupload@1.0.0/dist/aksFileUpload.min.js"></script>
+    <div id="aks-file-upload"></div>
+    <p id="uploadfile" type="json"></p>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 1em;
+        }
+        body {
+            background: aqua;
+            color: #4c4e53;
+            line-height: 1.5;
+            font-weight: 400;
+            font-size: 0.875em;
+            font-family: Gilroy-Medium;
+        }
+        #aks-file-upload {
+            width: 1000px;
+            display: block;
+            margin: 0 auto;
+            margin-top: 4rem;
+        }
+        .aks-file-upload-label{
+            height: 200px;
+        }
+        #uploadfile {
+            width: 80%;
+            margin: 0 auto;
+            color: #002c7b;
+            line-height: 1.5;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+    </style>
+    <script>
+        $(function () {
+            $("#aks-file-upload").aksFileUpload({
+                fileUpload: "#uploadfile",
+                // File Format
+                fileType: [ "pdf", "docx", "rtf", "jpg", "jpeg", "png", "txt", "mpa", "ogg", "aif", "cda", "mid", "midi", "mp3", "wav", "wma", "wpl", "7z", "arj", "deb", "pkg", "rar", "rpm", "tar.gz", "z", "zip", "csv", "dat", "db", "dbf", "log", "mdb", "sav", "sql", "tar", "xml", "apk", "exe", "jar", "py", "fnt", "fon", "otf", "ttf", "ai", "bmp", "gif", "ico", "jpeg", "jpg", "png", "ps", "psd", "svg", "tif", "tiff", "asp", "aspx", "css", "htm", "html", "js", "jsp", "php", "rss", "pps", "ppt", "pptx", "avi", "flv", "mov", "mp4", "mpg", "mpeg", "vob", "wmv", "doc", "rtf", "eps", "opus", "aep", "fig", "sketch", "xls", "xlsx" ],
+                // File Format
+                /* (default) - [ "pdf", "docx", "rtf", "jpg", "jpeg", "png", "txt", "mpa", "ogg", "aif", "cda", "mid", "midi", "mp3", "wav", "wma", "wpl", "7z", "arj", "deb", "pkg", "rar", "rpm", "tar.gz", "z", "zip", "csv", "dat", "db", "dbf", "log", "mdb", "sav", "sql", "tar", "xml", "apk", "exe", "jar", "py", "fnt", "fon", "otf", "ttf", "ai", "bmp", "gif", "ico", "jpeg", "jpg", "png", "ps", "psd", "svg", "tif", "tiff", "asp", "aspx", "css", "htm", "html", "js", "jsp", "php", "rss", "pps", "ppt", "pptx", "avi", "flv", "mov", "mp4", "mpg", "mpeg", "vob", "wmv", "doc", "rtf", "eps", "opus", "aep", "fig", "sketch" ] */
+                multiple: true,
+                maxSize: "1 GB",
+            });
+        });
+    </script>
+</body>
+
+</html>
