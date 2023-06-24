@@ -91,7 +91,7 @@ def login():
             return redirect(url_for('dashboard'))
         else:
             message = 'Please enter the correct email / password !!'
-    return render_template('login.html', message=message)
+    return render_template('login.html', message=message, datetime=str(datetime.datetime.now()))
 
 
 @app.route("/logout")
@@ -99,7 +99,7 @@ def logout():
     session.pop('loggedin', None)
     session.pop('Visitor_ID', None)
     session.pop('Email', None)
-    return render_template('login.html')
+    return redirect(url_for('login'))
 
 
 @app.route("/register", methods=['POST', 'GET'])
