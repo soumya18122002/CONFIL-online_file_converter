@@ -16,12 +16,14 @@ def png_to_svg(png_file_path, svg_file_path):
             # Save the drawing as an SVG file
             drawing.save()
 
+
 def processimage_png_to_svg(filename):
     input_dir = 'C:\\Users\\dawns\\OneDrive\\Desktop\\Confil The File Coverter\\uploads'
     output_dir = 'C:\\Users\\dawns\\OneDrive\\Desktop\\Confil The File Coverter\\downloads'
     for file in os.listdir(input_dir):
         if file == filename:
-            source_path = os.path.join(input_dir,file)
-            output_path = os.path.join(output_dir,'{0}.svg'.format(file.split('.')[-2]))
-            png_to_svg(source_path,output_path)
+            source_path = os.path.join(input_dir, file)
+            output_path = os.path.join(
+                output_dir, '{0}.svg'.format(file.split('.')[-2]))
+            png_to_svg(source_path, output_path)
             return output_path

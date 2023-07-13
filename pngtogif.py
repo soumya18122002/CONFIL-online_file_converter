@@ -1,6 +1,7 @@
 import imageio
 import cv2
 
+
 def processimage_png_to_gif(filename):
     image = cv2.imread(f"uploads/{filename}")
     newfilename = f"downloads/{filename.split('.')[0]}.gif"

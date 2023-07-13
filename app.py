@@ -10,6 +10,13 @@ import jpgtopdf
 import webptojpg
 import pngtogif
 import pngtosvg
+import pngtotiff
+import jpgtobmp
+import jpgtojpeg
+import pngtoico
+import giftowbmp
+import giftoeps
+import jpgtoexr
 
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif',
@@ -317,6 +324,229 @@ def png_to_svg():
         # return "Post request is here"
     return render_template('pngtosvg.html')
 
+
+@app.route("/pngtotiff", methods=['POST', 'GET'])
+def png_to_tiff():
+    if request.method == 'POST':
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            flash('No file part')
+            # return redirect(request.url)
+            return "Error"
+        file = request.files['file']
+        # If the user does not select a file, the browser submits an
+        # empty file without a filename.
+        if file.filename == '':
+            flash('No selected file')
+            # return redirect(request.url)
+            return "No File Selected"
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            fname = pngtotiff.processimage_png_to_tiff(filename)
+            print(fname)
+            # msg = download_j_to_p()
+            # print(msg)
+            flash(
+                f"Your image has been processed and is available <a href='/{fname}' target='_blank'>here</a>")
+            # return redirect(url_for('download_file', name=filename))
+            return send_file(fname, as_attachment=True)
+
+            # return render_template('jpgtopng.html')
+        # return "Post request is here"
+    return render_template('pngtotiff.html')
+
+
+@app.route("/jpgtobmp", methods=['POST', 'GET'])
+def jpg_to_bmp():
+    if request.method == 'POST':
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            flash('No file part')
+            # return redirect(request.url)
+            return "Error"
+        file = request.files['file']
+        # If the user does not select a file, the browser submits an
+        # empty file without a filename.
+        if file.filename == '':
+            flash('No selected file')
+            # return redirect(request.url)
+            return "No File Selected"
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            fname = jpgtobmp.processimage_jpg_to_bmp(filename)
+            print(fname)
+            # msg = download_j_to_p()
+            # print(msg)
+            flash(
+                f"Your image has been processed and is available <a href='/{fname}' target='_blank'>here</a>")
+            # return redirect(url_for('download_file', name=filename))
+            return send_file(fname, as_attachment=True)
+
+            # return render_template('jpgtopng.html')
+        # return "Post request is here"
+    return render_template('jpgtobmp.html')
+
+
+@app.route("/jpgtojpeg", methods=['POST', 'GET'])
+def jpg_to_jpeg():
+    if request.method == 'POST':
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            flash('No file part')
+            # return redirect(request.url)
+            return "Error"
+        file = request.files['file']
+        # If the user does not select a file, the browser submits an
+        # empty file without a filename.
+        if file.filename == '':
+            flash('No selected file')
+            # return redirect(request.url)
+            return "No File Selected"
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            fname = jpgtojpeg.processimage_jpg_to_jpeg(filename)
+            print(fname)
+            # msg = download_j_to_p()
+            # print(msg)
+            flash(
+                f"Your image has been processed and is available <a href='/{fname}' target='_blank'>here</a>")
+            # return redirect(url_for('download_file', name=filename))
+            return send_file(fname, as_attachment=True)
+
+            # return render_template('jpgtopng.html')
+        # return "Post request is here"
+    return render_template('jpgtojpeg.html')
+
+
+@app.route("/pngtoico", methods=['POST', 'GET'])
+def png_to_ico():
+    if request.method == 'POST':
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            flash('No file part')
+            # return redirect(request.url)
+            return "Error"
+        file = request.files['file']
+        # If the user does not select a file, the browser submits an
+        # empty file without a filename.
+        if file.filename == '':
+            flash('No selected file')
+            # return redirect(request.url)
+            return "No File Selected"
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            fname = pngtoico.processimage_png_to_ico(filename)
+            print(fname)
+            # msg = download_j_to_p()
+            # print(msg)
+            flash(
+                f"Your image has been processed and is available <a href='/{fname}' target='_blank'>here</a>")
+            # return redirect(url_for('download_file', name=filename))
+            return send_file(fname, as_attachment=True)
+
+            # return render_template('jpgtopng.html')
+        # return "Post request is here"
+    return render_template('pngtoico.html')
+
+
+@app.route("/giftowbmp", methods=['POST', 'GET'])
+def gif_to_wbmp():
+    if request.method == 'POST':
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            flash('No file part')
+            # return redirect(request.url)
+            return "Error"
+        file = request.files['file']
+        # If the user does not select a file, the browser submits an
+        # empty file without a filename.
+        if file.filename == '':
+            flash('No selected file')
+            # return redirect(request.url)
+            return "No File Selected"
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            fname = giftowbmp.processiamage_gif_to_wbmp(filename)
+            print(fname)
+            # msg = download_j_to_p()
+            # print(msg)
+            flash(
+                f"Your image has been processed and is available <a href='/{fname}' target='_blank'>here</a>")
+            # return redirect(url_for('download_file', name=filename))
+            return send_file(fname, as_attachment=True)
+
+            # return render_template('jpgtopng.html')
+        # return "Post request is here"
+    return render_template('giftowbmp.html')
+
+
+@app.route("/giftoeps", methods=['POST', 'GET'])
+def gif_to_eps():
+    if request.method == 'POST':
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            flash('No file part')
+            # return redirect(request.url)
+            return "Error"
+        file = request.files['file']
+        # If the user does not select a file, the browser submits an
+        # empty file without a filename.
+        if file.filename == '':
+            flash('No selected file')
+            # return redirect(request.url)
+            return "No File Selected"
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            fname = giftoeps.processiamage_gif_to_eps(filename)
+            print(fname)
+            # msg = download_j_to_p()
+            # print(msg)
+            flash(
+                f"Your image has been processed and is available <a href='/{fname}' target='_blank'>here</a>")
+            # return redirect(url_for('download_file', name=filename))
+            return send_file(fname, as_attachment=True)
+
+            # return render_template('jpgtopng.html')
+        # return "Post request is here"
+    return render_template('giftoeps.html')
+
+
+@app.route("/jpgtoexr", methods=['POST', 'GET'])
+def jpg_to_exr():
+    if request.method == 'POST':
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            flash('No file part')
+            # return redirect(request.url)
+            return "Error"
+        file = request.files['file']
+        # If the user does not select a file, the browser submits an
+        # empty file without a filename.
+        if file.filename == '':
+            flash('No selected file')
+            # return redirect(request.url)
+            return "No File Selected"
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            fname = jpgtoexr.processimage_jpg_to_exr(filename)
+            print(fname)
+            # msg = download_j_to_p()
+            # print(msg)
+            flash(
+                f"Your image has been processed and is available <a href='/{fname}' target='_blank'>here</a>")
+            # return redirect(url_for('download_file', name=filename))
+            return send_file(fname, as_attachment=True)
+
+            # return render_template('jpgtopng.html')
+        # return "Post request is here"
+    return render_template('jpgtoexr.html')
 
 # @app.route("/download_j_to_p")
 # def download_j_to_p():
